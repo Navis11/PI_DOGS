@@ -2,10 +2,10 @@
 //Nos traemos los modelos
 const { Temperament } = require('../db.js')
 //Traemos función de controllers que me va a traer las cosas de la API
-const { getApiInfo } = require('../controllers/Dog-controller.js')
+const { getApiInfo } = require('./Data-controllers.js')
 
-const getApiTemperaments = async () => {
-
+const getApiTemperaments = async (req, res) => {
+    try{
     // el  '?' es un opcional chaining  me permite encadenar cosas  porque JS se wachiturrea 
     const apiTemperaments = await getApiInfo();
     const temperamentList = apiTemperaments.map((el) => el.temperament?.split(", ")).flat();
@@ -20,9 +20,13 @@ const getApiTemperaments = async () => {
             });
         }
     });
-
     let allTemp = await Temperament.findAll()
+    res.status(200).send(allTemp)
     return allTemp
+
+    } catch(e){
+        console.log(e)
+    }
 }
 
 module.exports = { getApiTemperaments }

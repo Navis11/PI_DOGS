@@ -10,30 +10,55 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true
     },
+
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
-    height:{
-      type: DataTypes.STRING,
+
+    heightMin:{
+      type: DataTypes.STRING(5),
       allowNull: false
     },
-    weight:{
-      type: DataTypes.STRING,
+
+    heightMax:{
+      type: DataTypes.STRING(5),
       allowNull: false
     },
+
+    weightMin:{
+      type: DataTypes.STRING(5),
+      allowNull: false
+    },
+
+    weightMax:{
+      type: DataTypes.STRING(5),
+      allowNull: false
+    },
+
+    breeds: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
+    },
+
     lifeSpan:{
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: true
     },
+
     image: {
       type: DataTypes.STRING,
       allowNull: true
     },
+    
     createdInDb:{
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true
     }
-  });
+  },
+  {
+    timestamps: false
+  }
+  )
 };

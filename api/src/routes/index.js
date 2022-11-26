@@ -1,7 +1,7 @@
 const { Router } = require('express');
 // Importar todos los routers;
 const Dog = require('./dogs.js');
-const Temperament = require('./temperament.js');
+const Temperament = require('./temperaments.js');
 // Ejemplo: const authRouter = require('./auth.js');
 
 const router = Router();
