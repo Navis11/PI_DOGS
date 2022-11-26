@@ -25,10 +25,9 @@ const getApiInfo = async () =>{
                 temperament: d.temperament
             }
         })
-        //console.log(getApiInfo)
         return getInfoDogs;
     } catch(e){
-        console.log(e);
+        console.log(e)
     }
 }
 

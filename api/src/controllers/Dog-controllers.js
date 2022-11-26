@@ -63,7 +63,6 @@ const createDog =  async (req, res) => {
           createdInDb,
         });
         
-        console.log(temperament)
         temperament.forEach(async (e) => {
           if (e) {
   
@@ -80,7 +79,7 @@ const createDog =  async (req, res) => {
   
         return res.status(200).send("Dog Created");
       } else {
-        return res.status(404).send("Dog Not Created");
+        return res.status(404).send("Could not create new dog");
       }
     } catch (error) {
       console.log(error);
