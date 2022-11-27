@@ -1,10 +1,10 @@
-//Me traigo router de express
+//Importamos Router de express
 const { Router } = require('express');
 const router = Router();
-//Me traigo lo que voy a necesitar de los controllers de Temperament
+//Importo los controladores de Temperament
 const { getApiTemperaments } = require('../controllers/Temperament-controllers.js')
 
-//GET TEMPERRAMENTS de la API, LOS GUARDAMOS EN LA BDD
+//Traemos los temperamentos de la API y los guardamos en la DB
 router.get("/", getApiTemperaments );
 
 module.exports = router

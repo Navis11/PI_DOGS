@@ -1,17 +1,16 @@
-//IMPORTO LO QUE VOY A NECESITAR EN ESTE ARCHIVO, CONCERNIENTE A LOS TEMPERAMENTOS
-//Nos traemos los modelos
+//Importamos Modelos
 const { Temperament } = require('../db.js')
-//Traemos función de controllers que me va a traer las cosas de la API
+//Traemos función de controllers que me va a traer las cosas de la API unicamente
 const { getApiInfo } = require('./Data-controllers.js')
 
 const getApiTemperaments = async (req, res) => {
     try{
-    // el  '?' es un opcional chaining  me permite encadenar cosas  porque JS se wachiturrea 
+    // el  '?' es un opcional chaining  me permite encadenar cosas  porque JS se rompe 
     const apiTemperaments = await getApiInfo();
     const temperamentList = apiTemperaments.map((el) => el.temperament?.split(", ")).flat();
     // quita los 'sub arrays'
     const temperament = [...new Set(temperamentList)];
-    // el set te devuelve uno solo si es que xisten elementos repetidos
+    // el set te devuelve uno solo si es que existen elementos repetidos
 
     temperament.forEach(async element => {
         if (element) {

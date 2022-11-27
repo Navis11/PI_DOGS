@@ -1,11 +1,9 @@
-//Me traigo router de express
+//Importamos Router de express
 const { Router } = require('express');
 const router = Router();
-//Me traigo lo que voy a necesitar de los controllers de Dogs
+//Importamos controlers de Dog
 const { getDogsByName, getDogsById, createDog } = require('../controllers/Dog-controllers.js')
 
-//Modularizado
-//router.get('/', funcion)
 //Esta ruta hace la función de la ruta principal y la de búsqueda por nombre, me va a traer a todos los perris, así como por nombre tanto de la API como de la bdd
 router.get('/', getDogsByName)
 

@@ -1,11 +1,11 @@
-//Nos traemos la API_KEY
+//Importamos API KEY
 const { API_KEY } = process.env;
-//Nos traemos los modelos
+//Importamos modelos
 const { Dog, Temperament } = require('../db.js')
-//Insatalamos e importamos axios
+//Instalamos e importamos axios
 const axios = require('axios');
 
-//función para traerme la info de los perris que necesito de la API
+//Controlador que va a retornar la información formateada de todos los perros de la API
 const getApiInfo = async () =>{
     try{
         const getDogs = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
@@ -22,7 +22,7 @@ const getApiInfo = async () =>{
                 breeds: d.breed_group,
                 lifeSpan: d.life_span,
                 image: d.image.url ? d.image.url : "Image not found",
-                temperament: d.temperament
+                temperament: d.temperament  //temperamento va a ser una string
             }
         })
         return getInfoDogs;
@@ -36,9 +36,9 @@ const getDbInfo = async () => {
     try{
     const dogsDb = await Dog.findAll({
         //el include funciona como si fuera un join entre la tabla Dogs
-        // y la tabla temper, por medio del name que es la raza
+        // y la tabla Temperament, por medio del name que es la raza
         include:{ 
-            model: Temperament, //incluye datos del modelo temperament
+            model: Temperament, //incluye datos del modelo Temperament
             attributes: ['name'], //me trae el name de temperamento
             through:{
                 attributes: [], // supuestamente acá los manda
@@ -47,7 +47,7 @@ const getDbInfo = async () => {
     });
 
     const newDb = dogsDb.map((d) => {
-        // mapeo los nuevos datos que me traje de mi db
+        // mapeo los nuevos datos que me traje de mi db y les doy el formato requerido
         return {
             id: d.id,
             image: d.image,
@@ -58,7 +58,7 @@ const getDbInfo = async () => {
             weightMax: parseInt(d.weightMax),
             breeds: d.breeds,
             life_span: d.life_span + " years",
-            temperament: d.temperaments.map((d) => d.name) // este cuando haga el temperamen me va hacer falta  para   el get de temperamentos
+            temperament: d.temperaments.map((d) => d.name) // este cuando haga el temperamen me va hacer falta para el get de temperamentos
         }
     })
     return newDb
