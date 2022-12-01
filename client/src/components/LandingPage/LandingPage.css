@@ -1,0 +1,37 @@
+.LandingBackground {
+    background-image: url('C:\Users\PEDRO\Desktop\PI_DOGS\PI-Dogs-main\client\src\components\LandingPage\73962.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LandingTitle {
+    position: fixed;
+    top: 10px; 
+    font-size: 60px;
+    color: #000000;
+    font-family: 'Fredoka One', cursive;
+    letter-spacing: 4px;
+}
+
+.LandingButton {
+    position: relative;
+    bottom: 145px;
+    font-family: 'Fredoka One', cursive;
+    font-size:25px;
+    outline:1px solid #af8282;
+    background:#ddc1c1;
+    border-width:1px;
+    border-style:solid;
+    border-color:#FFFFFF #808080 #808080;
+}
+
+.LandingButton:hover {
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.4);
+    transform: translateY(-3%);
+}
