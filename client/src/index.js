@@ -8,9 +8,9 @@ import { store } from './store';
 
 ReactDOM.render(
   <Provider store={store}>
-  <React.Fragment>
-    <App />
-  </React.Fragment>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
   </Provider>,
   //Ya viene el index creado 'root' viene en el index de public
   document.getElementById('root')
